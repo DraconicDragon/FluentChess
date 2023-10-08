@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="FluentChess.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:FluentChess"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <GridView
+            Width="Auto"
+            Height="Auto"
+            ItemsSource="{x:Bind Chessboard}">
+
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="8" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="local:ChessSquare">
+                    <Border
+                        Width="80"
+                        Height="80"
+                        Margin="-2"
+                        Background="{x:Bind Color}"
+                        CornerRadius="0"
+                        Tapped="Cell_Click">
+
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="Black"
+                            Text="{x:Bind Text}" />
+                    </Border>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <!--  TextBox for user input and Button for validation  -->
+        <TextBox
+            x:Name="InputTextBox"
+            Width="200"
+            PlaceholderText="Enter a cell (e.g., h6)" />
+        <Button Click="ValidateButton_Click" Content="Validate" />
+
+    </StackPanel>
+</Window>

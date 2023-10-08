@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FluentChess (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "FluentChess (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
